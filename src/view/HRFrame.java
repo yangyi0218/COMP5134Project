@@ -1,9 +1,6 @@
 package view;
 
-import java.awt.*;
-import java.util.HashMap;
 import javax.swing.*;
-import mode.Staff;
 
 /**
  * 

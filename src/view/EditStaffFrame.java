@@ -1,10 +1,7 @@
 package view;
 
-import java.util.HashMap;
-
 import javax.swing.*;
 
-import mode.Staff;
 
 /**
  * 

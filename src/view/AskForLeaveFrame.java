@@ -1,10 +1,9 @@
 package view;
 
-import java.util.HashMap;
 
 import javax.swing.*;
 
-import mode.Staff;
+
 
 public class AskForLeaveFrame extends JFrame {
 	private AskForLeavePanel askForLeavePanel;

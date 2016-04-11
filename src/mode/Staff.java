@@ -1,7 +1,7 @@
 package mode;
 
 
-import view.AskForLeaveFrame;
+
 
 /**
  * A Staff is a staff of the Company with a staffID and a supervisor.
