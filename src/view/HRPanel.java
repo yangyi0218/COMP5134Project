@@ -20,18 +20,13 @@ public class HRPanel extends JPanel implements ActionListener {
 		
 	private JButton editButton;
 	private JButton loginButton;
-//	private HashMap<String, Staff> allStaff;
-//	private HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
-//	static HashMap<String, Staff> allStaff;
-//	static HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
 	
 	/**
 	 * 
 	 * @param allStaff
 	 * @param allFrame 
 	 */
-	public HRPanel(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame
-			) {
+	public HRPanel() {
 		this.setLayout(new BorderLayout());
 		JPanel topPanel = new JPanel();
 		topPanel.add(new JLabel("Welcome to HR system!"));
@@ -62,21 +57,16 @@ public class HRPanel extends JPanel implements ActionListener {
 	    	centerPanel.add(new JPanel());
 	    }
 	    add(centerPanel, BorderLayout.CENTER);
-	    
-//	    this.allStaff = allStaff;
-//	    this.allAskForLeaveFrame = allAskForLeaveFrame;
-	}
+	    }
 	
 	public void actionPerformed(ActionEvent e) {
 
         Object source = e.getSource();
         if(source == editButton){ // someone clicks edit button
-            EditStaffFrame editStaffFrame = new EditStaffFrame(//allstaff
-            		);
+            EditStaffFrame editStaffFrame = new EditStaffFrame();
             editStaffFrame.setVisible(true);
         } else{ //someone clicks login button
-            LoginFrame loginFrame = new LoginFrame(//allstaff, allAskForLeaveFrame
-            		);
+            LoginFrame loginFrame = new LoginFrame();
             loginFrame.setVisible(true);
         }
         

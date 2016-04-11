@@ -20,8 +20,7 @@ public class HRSystemRun {
 		allStaff.put("001",director);
 		
 		allAskForLeaveFrame = new HashMap<>();
-		HRFrame hrFrame = new HRFrame(//allStaff, allAskForLeaveFrame
-				);
+		HRFrame hrFrame = new HRFrame();
 		hrFrame.setVisible(true);
 
 	}

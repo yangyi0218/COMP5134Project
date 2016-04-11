@@ -13,13 +13,11 @@ import mode.Staff;
 public class HRFrame extends JFrame {
 	private HRPanel hrPanel;
 	
-	public HRFrame(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame
-			) {
+	public HRFrame() {
 		super("HRSystem");
 		this.setSize(500, 300);
 		this.setLocation(100, 100);
-		hrPanel = new HRPanel(//allStaff, allAskForLeaveFrame
-				);
+		hrPanel = new HRPanel();
 		this.add(hrPanel);
 		
 	}

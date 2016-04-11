@@ -21,7 +21,6 @@ public class EditStaffPanel extends JPanel implements ActionListener {
     JTextField supervisorIDField;
     JButton addButton;
     JButton deleteButton;
-//    HashMap<String, Staff> allStaff;
     EditStaffFrame editStaffFrame;
 
     /**
@@ -29,9 +28,7 @@ public class EditStaffPanel extends JPanel implements ActionListener {
      * @param allStaff
      * @param addStaffFrame
      */
-    public EditStaffPanel(//HashMap<String, Staff> allStaff, 
-    		EditStaffFrame editStaffFrame) {
-//        this.allStaff = allStaff;
+    public EditStaffPanel(EditStaffFrame editStaffFrame) {
         this.editStaffFrame = editStaffFrame;
         this.setLayout(new BorderLayout());
         

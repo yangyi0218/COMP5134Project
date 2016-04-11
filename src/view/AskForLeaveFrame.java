@@ -9,13 +9,11 @@ import mode.Staff;
 public class AskForLeaveFrame extends JFrame {
 	private AskForLeavePanel askForLeavePanel;
 
-    public AskForLeaveFrame(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame, 
-    		String staffID){
+    public AskForLeaveFrame(String staffID){
         super("LeaveApplication Window");
         this.setSize(500, 300);
         this.setLocation(800, 600);
-        askForLeavePanel = new AskForLeavePanel(//allStaff, allAskForLeaveFrame, 
-        		staffID, this);
+        askForLeavePanel = new AskForLeavePanel(staffID, this);
         this.add(askForLeavePanel);
     }
     

@@ -14,15 +14,10 @@ public class LoginPanel extends JPanel implements ActionListener {
 	String staffID;
 	JTextField staffIDField;
 	JButton loginButton;
-//	HashMap<String, Staff> allStaff;
-//	HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
 	LoginFrame loginFrame;
 
-    public LoginPanel(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame, 
-    		LoginFrame loginFrame) {
+    public LoginPanel(LoginFrame loginFrame) {
     
-//        this.allStaff = allStaff;
-//        this.allAskForLeaveFrame = allAskForLeaveFrame;
         this.loginFrame = loginFrame;
         this.setLayout(new BorderLayout());
         JPanel topPanel = new JPanel();
@@ -67,10 +62,8 @@ public class LoginPanel extends JPanel implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(loginFrame, "Login successfully!");
             Staff staff = HRSystemRun.allStaff.get(staffID);
-            AskForLeaveFrame askForLeaveFrame = new AskForLeaveFrame(//allStaff, allAskForLeaveFrame, 
-            		staffID);
+            AskForLeaveFrame askForLeaveFrame = new AskForLeaveFrame(staffID);
             HRSystemRun.allAskForLeaveFrame.put(staff, askForLeaveFrame);
-            //staff.setAskForLeaveFrame(askForLeaveFrame);
             askForLeaveFrame.setVisible(true);
       }
   }

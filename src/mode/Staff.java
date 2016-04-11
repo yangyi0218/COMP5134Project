@@ -1,6 +1,5 @@
 package mode;
 
-import javax.swing.JOptionPane;
 
 import view.AskForLeaveFrame;
 
@@ -13,7 +12,6 @@ public class Staff {
 	
 	private String staffID;
 	private Staff supervisor;
-	private AskForLeaveFrame askForLeaveFrame;
 	private int supervisedStaff = 0;
 	
 	/**
@@ -30,12 +28,6 @@ public class Staff {
 	//getters and setters
 	//
 	
-	public AskForLeaveFrame getAskForLeaveFrame() {
-		return askForLeaveFrame;
-	}
-	public void setAskForLeaveFrame(AskForLeaveFrame askForLeaveFrame) {
-		this.askForLeaveFrame = askForLeaveFrame;
-	}
 	public String getStaffID() {
 		return staffID;
 	}
@@ -69,9 +61,7 @@ public class Staff {
 	 * @return 
 	 * @return the response from supervisor(s)
 	 */
-//	public boolean askForLeave(LeaveApplication leaveApplication){
-//		return supervisor.receiveLeaveRequest(leaveApplication);
-//	}
+
 	public LeaveApplication askForLeave(String startDate, String endDate){
 		LeaveApplication leaveApplication = new LeaveApplication(staffID, startDate, endDate);
 		return leaveApplication;
@@ -82,22 +72,7 @@ public class Staff {
 	 * @param leaveApplication the LeaveApplication from supervisee
 	 * @return the response to LeaveApplication of suerpvisee
 	 */
-//	public boolean receiveLeaveRequest(LeaveApplication leaveApplication){
-//        int dialogButton = JOptionPane.YES_NO_OPTION;
-//        String message = leaveApplication.staffID + " asks leave from " + leaveApplication.startDate + " to " + leaveApplication.endDate;
-//        int dialogResult = JOptionPane.showConfirmDialog(askForLeaveFrame, message,"Warning",dialogButton);
-//        if(dialogResult == JOptionPane.YES_OPTION) { // if the response to leave application of the supervisee is approved
-//            if(supervisor != null) {// if this staff has supervisor, pass this request to supervisor of this staff
-//                return askForLeave(leaveApplication);
-//            }
-//            else {// the staff has no supervisor (i.e. this staff is a director), 
-//                return true;
-//            }
-//        }
-//        else{ //
-//            return false;
-//        }
-//	}
+
 	public boolean handleApplication() {
 		if (this.supervisor == null) {
 			return true;
