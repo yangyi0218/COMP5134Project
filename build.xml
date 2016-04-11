@@ -11,10 +11,10 @@
     <property name="source" value="1.8"/>
               	
     <!-- Variable -->
-    <proerty name="build.dir" location="bin" />
-    <proerty name="dist.dir" location="dist" />
-    <proerty name="docs.dir" location="docs" />
-    <proerty name="src.dir" location="src" />
+    <property name="build.dir" location="bin" />
+    <property name="dist.dir" location="dist" />
+    <property name="docs.dir" location="docs" />
+    <property name="src.dir" location="src" />
               	
     <path id="COMP5134ProjectHRsystem.classpath">
         <pathelement location="bin"/>
@@ -71,9 +71,9 @@
     			
     <!--Creates the deployable jar file-->
     <target name="jar" depends="build-project">
-    		<jar destfile="$(dist.dir)/test.jar" basedir="$(build.dir)">
+    		<jar destfile="$(dist.dir)/project.jar" basedir="$(build.dir)">
     			<manifest>
-    				<atrribute name="Main-Class" value="test.Main" />
+    				<attribute name="Main-Class" value="view.HRSystemRun" />
     			</manifest>
     		</jar>
     </target>
