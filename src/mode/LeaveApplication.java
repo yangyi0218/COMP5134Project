@@ -7,9 +7,9 @@ package mode;
  */
 public class LeaveApplication {
 
-	String staffID;
-	String startDate;
-	String endDate;
+	private String staffID;
+	private String startDate;
+	private String endDate;
 	
 	/**
 	 * 
@@ -22,6 +22,18 @@ public class LeaveApplication {
 		this.staffID = staffID;
 		this.startDate = startDate;
 		this.endDate = endDate;
+	}
+	
+	public String getStaffID() {
+		return staffID;
+	}
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	
+	public String getEndDate() {
+		return endDate;
 	}
 
 }

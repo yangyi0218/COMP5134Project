@@ -14,12 +14,15 @@ public class LoginPanel extends JPanel implements ActionListener {
 	String staffID;
 	JTextField staffIDField;
 	JButton loginButton;
-	HashMap<String, Staff> allStaff;
+//	HashMap<String, Staff> allStaff;
+//	HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
 	LoginFrame loginFrame;
 
-    public LoginPanel(HashMap<String, Staff> allStaff, LoginFrame loginFrame) {
+    public LoginPanel(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame, 
+    		LoginFrame loginFrame) {
     
-        this.allStaff = allStaff;
+//        this.allStaff = allStaff;
+//        this.allAskForLeaveFrame = allAskForLeaveFrame;
         this.loginFrame = loginFrame;
         this.setLayout(new BorderLayout());
         JPanel topPanel = new JPanel();
@@ -58,14 +61,16 @@ public class LoginPanel extends JPanel implements ActionListener {
 
         if (staffID.trim().equals("")) {
             JOptionPane.showMessageDialog(loginFrame, "Error: something is missing");
-        } else if (!allStaff.containsKey(staffID)) {
+        } else if (!HRSystemRun.allStaff.containsKey(staffID)) {
             JOptionPane.showMessageDialog(loginFrame, "Error: staff does not exist");
 
         } else {
             JOptionPane.showMessageDialog(loginFrame, "Login successfully!");
-            Staff staff = allStaff.get(staffID);
-            AskForLeaveFrame askForLeaveFrame = new AskForLeaveFrame(allStaff, staffID);
-            staff.setAskForLeaveFrame(askForLeaveFrame);
+            Staff staff = HRSystemRun.allStaff.get(staffID);
+            AskForLeaveFrame askForLeaveFrame = new AskForLeaveFrame(//allStaff, allAskForLeaveFrame, 
+            		staffID);
+            HRSystemRun.allAskForLeaveFrame.put(staff, askForLeaveFrame);
+            //staff.setAskForLeaveFrame(askForLeaveFrame);
             askForLeaveFrame.setVisible(true);
       }
   }

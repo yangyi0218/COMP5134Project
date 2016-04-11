@@ -12,15 +12,18 @@ import mode.LeaveApplication;
 import mode.Staff;
 
 public class AskForLeavePanel extends JPanel implements ActionListener {
-	String startTime;
-    String endTime;
+	String startDate;
+    String endDate;
     JTextField fromDateTextField;
     JTextField toDateTextField;
     AskForLeaveFrame askForLeaveFrame;
-    HashMap<String, Staff> allStaff;
+//    HashMap<String, Staff> allStaff;
+//    HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
     String staffID;
+    Staff staff;
 
-    public AskForLeavePanel(HashMap<String, Staff> allStaff, String staffID, AskForLeaveFrame askForLeaveFrame) {
+    public AskForLeavePanel(//HashMap<String, Staff> allStaff, HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame, 
+    		String staffID, AskForLeaveFrame askForLeaveFrame) {
         if (staffID.equals("001")) {
         	JPanel topPanel = new JPanel();
             topPanel.add(new JLabel("Welcome Director!"));
@@ -60,26 +63,59 @@ public class AskForLeavePanel extends JPanel implements ActionListener {
             }
             add(centerPanel, BorderLayout.CENTER);
         }
-        this.allStaff = allStaff;
+//        this.allStaff = allStaff;
         this.staffID = staffID;
         this.askForLeaveFrame = askForLeaveFrame;
+        this.staff = HRSystemRun.allStaff.get(staffID);
+
 
     }
 
 
     public void actionPerformed(ActionEvent e) {
-        startTime = fromDateTextField.getText();
-        endTime = toDateTextField.getText();
+        startDate = fromDateTextField.getText();
+        endDate = toDateTextField.getText();
+        LeaveApplication leaveApplication = HRSystemRun.allStaff.get(staffID).askForLeave(startDate, endDate);
+        Staff supervisor = staff.getSupervisor();
+        AskForLeaveFrame supervisorFrame = HRSystemRun.allAskForLeaveFrame.get(supervisor);
+        AskForLeavePanel supervisorPanel = supervisorFrame.getAskForLeavePanel();
+        supervisorPanel.receiveLeaveRequest(leaveApplication);
+        
+        boolean response = supervisorPanel.receiveLeaveRequest(leaveApplication);
 
-        LeaveApplication leaveApplication = new LeaveApplication(staffID, startTime, endTime);
-        Staff staff = allStaff.get(staffID);
-        boolean response = staff.askForLeave(leaveApplication);
+//        LeaveApplication leaveApplication = new LeaveApplication(staffID, startTime, endTime);
+//        Staff staff = allStaff.get(staffID);
+//        boolean response = staff.askForLeave(leaveApplication);
 
         if (response == true) {
             JOptionPane.showMessageDialog(askForLeaveFrame, "supervisors says yes");
         } else {
             JOptionPane.showMessageDialog(askForLeaveFrame, "supervisors says no");
         }
+    
     }
+    
+	public boolean receiveLeaveRequest(LeaveApplication leaveApplication){
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        String message = leaveApplication.getStaffID() + " asks leave from " 
+        + leaveApplication.getStartDate() + " to " + leaveApplication.getEndDate();
+        int dialogResult = JOptionPane.showConfirmDialog(askForLeaveFrame, message,"Warning",dialogButton);
+        
+        if(dialogResult == JOptionPane.YES_OPTION) { // if the response to leave application of the supervisee is approved
+            if(!staff.handleApplication()) {// if this staff has supervisor, pass this request to supervisor of this staff
+                Staff supervisor = staff.getSupervisor();
+                AskForLeaveFrame supervisorFrame = HRSystemRun.allAskForLeaveFrame.get(supervisor);
+                AskForLeavePanel supervisorPanel = supervisorFrame.getAskForLeavePanel();
+
+                return supervisorPanel.receiveLeaveRequest(leaveApplication);
+            }
+            else {// the staff has no supervisor (i.e. this staff is a director), 
+                return true;
+            }
+        }
+        else{ //
+            return false;
+        }
+	}
 
 }

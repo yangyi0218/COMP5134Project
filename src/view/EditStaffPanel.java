@@ -21,7 +21,7 @@ public class EditStaffPanel extends JPanel implements ActionListener {
     JTextField supervisorIDField;
     JButton addButton;
     JButton deleteButton;
-    HashMap<String, Staff> allStaff;
+//    HashMap<String, Staff> allStaff;
     EditStaffFrame editStaffFrame;
 
     /**
@@ -29,8 +29,9 @@ public class EditStaffPanel extends JPanel implements ActionListener {
      * @param allStaff
      * @param addStaffFrame
      */
-    public EditStaffPanel(HashMap<String, Staff> allStaff, EditStaffFrame editStaffFrame) {
-        this.allStaff = allStaff;
+    public EditStaffPanel(//HashMap<String, Staff> allStaff, 
+    		EditStaffFrame editStaffFrame) {
+//        this.allStaff = allStaff;
         this.editStaffFrame = editStaffFrame;
         this.setLayout(new BorderLayout());
         
@@ -82,27 +83,27 @@ public class EditStaffPanel extends JPanel implements ActionListener {
         if(source == addButton) { // add a staff
             if (staffID.trim().equals("") || supervisorID.trim().equals("")) {
                 JOptionPane.showMessageDialog(editStaffFrame, "Error: something is missing!");
-            } else if (allStaff.containsKey(staffID)) {
+            } else if (HRSystemRun.allStaff.containsKey(staffID)) {
                 JOptionPane.showMessageDialog(editStaffFrame, "Error: staff id already exists!");
-            } else if (!allStaff.containsKey(supervisorID)) {
+            } else if (!HRSystemRun.allStaff.containsKey(supervisorID)) {
                 JOptionPane.showMessageDialog(editStaffFrame, "Error: supervisor does not exist!");
             } else {
-                Staff supervisor = allStaff.get(supervisorID);
+                Staff supervisor = HRSystemRun.allStaff.get(supervisorID);
                 Staff staff = new Staff(staffID, supervisor);
-                allStaff.put(staffID, staff);
+                HRSystemRun.allStaff.put(staffID, staff);
                 supervisor.supervise(true);
                 JOptionPane.showMessageDialog(editStaffFrame, "Add successfully!");
             }
         }else{ //delete a staff
-            if(!allStaff.containsKey(staffID)){
+            if(!HRSystemRun.allStaff.containsKey(staffID)){
                 JOptionPane.showMessageDialog(editStaffFrame, "Error: staff does not exist!");
             }else if (staffID.trim().equals("001")){
             	JOptionPane.showMessageDialog(editStaffFrame, "Error: You can not delete Director!");
-            }else if(allStaff.get(staffID).getSupervisedStaff() != 0) {
+            }else if(HRSystemRun.allStaff.get(staffID).getSupervisedStaff() != 0) {
             	JOptionPane.showMessageDialog(editStaffFrame, "Error: staff supervises others!");
             }else {
-            	allStaff.get(staffID).getSupervisor().supervise(false);
-                allStaff.remove(staffID);
+            	HRSystemRun.allStaff.get(staffID).getSupervisor().supervise(false);
+            	HRSystemRun.allStaff.remove(staffID);
                 JOptionPane.showMessageDialog(editStaffFrame, "Delete successfully!");
             }
         }

@@ -14,11 +14,13 @@ import mode.Staff;
 public class EditStaffFrame extends JFrame {
 	private EditStaffPanel editStaffPanel;
 
-	public EditStaffFrame(HashMap<String, Staff> allStaff) {
+	public EditStaffFrame(//HashMap<String, Staff> allStaff
+			) {
 		super("Add/Delete Staff Window");
         this.setSize(500, 300);
         this.setLocation(800, 100);
-        editStaffPanel = new EditStaffPanel(allStaff, this);
+        editStaffPanel = new EditStaffPanel(//allStaff, 
+        		this);
         this.add(editStaffPanel);
 	}
 

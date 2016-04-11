@@ -66,10 +66,15 @@ public class Staff {
 	/**
 	 * Returns the response of LeaveApplication from supervisor(s), makes a LeaveApplication to supervisor(s).
 	 * @param leaveApplication the LeaveApplication the of staff
+	 * @return 
 	 * @return the response from supervisor(s)
 	 */
-	public boolean askForLeave(LeaveApplication leaveApplication){
-		return supervisor.receiveLeaveRequest(leaveApplication);
+//	public boolean askForLeave(LeaveApplication leaveApplication){
+//		return supervisor.receiveLeaveRequest(leaveApplication);
+//	}
+	public LeaveApplication askForLeave(String startDate, String endDate){
+		LeaveApplication leaveApplication = new LeaveApplication(staffID, startDate, endDate);
+		return leaveApplication;
 	}
 	
 	/**
@@ -77,21 +82,29 @@ public class Staff {
 	 * @param leaveApplication the LeaveApplication from supervisee
 	 * @return the response to LeaveApplication of suerpvisee
 	 */
-	public boolean receiveLeaveRequest(LeaveApplication leaveApplication){
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        String message = leaveApplication.staffID + " asks leave from " + leaveApplication.startDate + " to " + leaveApplication.endDate;
-        int dialogResult = JOptionPane.showConfirmDialog(askForLeaveFrame, message,"Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION) { // if the response to leave application of the supervisee is approved
-            if(supervisor != null) {// if this staff has supervisor, pass this request to supervisor of this staff
-                return askForLeave(leaveApplication);
-            }
-            else {// the staff has no supervisor (i.e. this staff is a director), 
-                return true;
-            }
-        }
-        else{ //
-            return false;
-        }
+//	public boolean receiveLeaveRequest(LeaveApplication leaveApplication){
+//        int dialogButton = JOptionPane.YES_NO_OPTION;
+//        String message = leaveApplication.staffID + " asks leave from " + leaveApplication.startDate + " to " + leaveApplication.endDate;
+//        int dialogResult = JOptionPane.showConfirmDialog(askForLeaveFrame, message,"Warning",dialogButton);
+//        if(dialogResult == JOptionPane.YES_OPTION) { // if the response to leave application of the supervisee is approved
+//            if(supervisor != null) {// if this staff has supervisor, pass this request to supervisor of this staff
+//                return askForLeave(leaveApplication);
+//            }
+//            else {// the staff has no supervisor (i.e. this staff is a director), 
+//                return true;
+//            }
+//        }
+//        else{ //
+//            return false;
+//        }
+//	}
+	public boolean handleApplication() {
+		if (this.supervisor == null) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 

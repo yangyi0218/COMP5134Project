@@ -11,6 +11,7 @@ import mode.Staff;
  */
 public class HRSystemRun {
 	public static HashMap<String, Staff> allStaff;
+	public static HashMap<Staff, AskForLeaveFrame> allAskForLeaveFrame;
 
 	public static void main(String[] args) {
 		
@@ -18,7 +19,9 @@ public class HRSystemRun {
 		Staff director = new Staff("001",null);
 		allStaff.put("001",director);
 		
-		HRFrame hrFrame = new HRFrame(allStaff);
+		allAskForLeaveFrame = new HashMap<>();
+		HRFrame hrFrame = new HRFrame(//allStaff, allAskForLeaveFrame
+				);
 		hrFrame.setVisible(true);
 
 	}
