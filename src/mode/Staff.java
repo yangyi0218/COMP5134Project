@@ -56,23 +56,20 @@ public class Staff {
 	
 
 	/**
-	 * Returns the response of LeaveApplication from supervisor(s), makes a LeaveApplication to supervisor(s).
-	 * @param leaveApplication the LeaveApplication the of staff
-	 * @return 
-	 * @return the response from supervisor(s)
+	 * Returns the LeaveApplication made by Staff
+	 * @param startDate the startDate of LeaveApplication
+	 * @param endDate the endDate of LeaveApplication
+	 * @return the LeaveApplication made by Staff
 	 */
-
 	public LeaveApplication askForLeave(String startDate, String endDate){
 		LeaveApplication leaveApplication = new LeaveApplication(staffID, startDate, endDate);
 		return leaveApplication;
 	}
 	
 	/**
-	 * Returns the response to LeaveApplication of supervisee, 
-	 * @param leaveApplication the LeaveApplication from supervisee
-	 * @return the response to LeaveApplication of suerpvisee
+	 * Indicates whether this Staff can make final decision
+	 * @return true ==> Staff can make final decision, false ==> Staff cannot make final decision
 	 */
-
 	public boolean handleApplication() {
 		if (this.supervisor == null) {
 			return true;

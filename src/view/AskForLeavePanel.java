@@ -103,7 +103,7 @@ public class AskForLeavePanel extends JPanel implements ActionListener {
                 return makeRequest(leaveApplication);
             }
         }
-        else{ //
+        else{ // the response to leaveAppliction of the supervisee is reject
             return false;
         }
 	}
