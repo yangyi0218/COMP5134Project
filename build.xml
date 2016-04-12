@@ -62,9 +62,9 @@
               	
     <!-- Creates Javadoc -->
     <target name="docs" depends="build-project">
-    	<javadoc packagenames="src" sourcepath="$(src.dir)" destdir="$(docs.dir)">
+    	<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
     	    <!-- Define which files / directory should get included, we include all -->
-    		<fileset dir="$(src.dir)">
+    		<fileset dir="${src.dir}">
     		    <include name="**" />
     	    </fileset>
     	</javadoc>
@@ -72,7 +72,7 @@
     			
     <!--Creates the deployable jar file-->
     <target name="jar" depends="build-project">
-    		<jar destfile="$(dist.dir)/project.jar" basedir="$(build.dir)">
+    		<jar destfile="${dist.dir}/project.jar" basedir="${build.dir}">
     			<manifest>
     				<attribute name="Main-Class" value="view.HRSystemRun" />
     			</manifest>

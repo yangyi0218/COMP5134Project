@@ -1,0 +1,15 @@
+This file contains the instruction to use this system.
+
+Click "add or delete button" to open "editStaffFrame"
+	add: you need to input "staffID" and "SupervisorID"
+		 Director has been initialized to be "001"
+	delete: you need to input "staffID"
+
+Click "login button" to open "login window"
+	login: you need to input "staffID"
+		ApplyleaveApplication: you need to input "startDate" and "endDate"
+		
+
+	
+
+
